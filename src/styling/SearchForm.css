@@ -1,0 +1,14 @@
+#filter, 
+.form-control{
+    width: 70%;
+    display: inline;
+    margin: 0;
+}
+
+.filter-btn, 
+.sort-btn {
+    margin: 5px 5px 10px 20px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(146, 146, 255);
+    border: none;
+}
