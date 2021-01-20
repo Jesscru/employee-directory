@@ -10,10 +10,10 @@ function ResultsTable(props){
             <thead>
               <tr>
                 <th>Profile</th>
-                <th>Name</th>
+                <th data-value="name" onClick={props.handleNameSort}>Name</th>
                 <th>Phone</th>
                 <th>Email</th>
-                <th>Location</th>
+                <th data-value="location" onClick={props.handleStateSort}>Location</th>
               </tr>
             </thead>
             <tbody>
@@ -24,6 +24,15 @@ function ResultsTable(props){
                     <td>{person.phone}</td>
                     <td>{person.email}</td>
                     <td>{person.location.state}</td>
+                </tr>
+                ))}
+               {props.filteredNames.map(name => (
+                <tr key={name.login.uuid}>
+                    <td><img src={name.picture.medium} alt="profile of employee"></img></td>
+                    <td>{name.name.first} {name.name.last}</td>
+                    <td>{name.phone}</td>
+                    <td>{name.email}</td>
+                    <td>{name.location.state}</td>
                 </tr>
                 ))}
             </tbody>

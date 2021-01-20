@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import SortDrop from "./SortDrop";
 import "../styling/SearchForm.css";
 
 
@@ -17,6 +18,16 @@ function SearchForm(props){
                 value={props.value}
                 onChange={props.handleInputChange}
               />
+              <datalist id="states">
+                  {this.state.states.map(state => (
+                      <option value={state} key={state}></option>
+                  ))}
+              </datalist>
+
+            <SortDrop 
+              handleNameSort={props.handleNameSort}
+              handleStateSort={props.handleStateSort}/>
+
             <Button 
               className="filter-btn"
               variant="outline-primary" 
@@ -26,7 +37,7 @@ function SearchForm(props){
             <Button 
               className="sort-btn"
               variant="outline-primary" 
-              onClick={props.handleSort}>Sort by last name
+              onClick={props.handleReset}>Reset
             </Button>
 
           </form>

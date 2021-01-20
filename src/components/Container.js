@@ -10,8 +10,8 @@ class Container extends Component {
       people: [],
       names: [],
       search: "",
-      locations: ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
-    };
+      locations: ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"],
+      };
   
   // when this component mounts, query the database for all of the people
     componentDidMount() {
@@ -36,34 +36,52 @@ class Container extends Component {
       });
     };
 
-  // filters employees by the (last) name entered in the input field
+  // filters employees by state entered in input field 
   handleFormSubmit = event => {
     event.preventDefault();
-
-    const inputValue = document.querySelector("#filter").value;
-    const filteredName = this.state.people.filter(name => name.name.last === inputValue);
+    const filterState = document.querySelector("#filterInput").value;
+    const filtered = this.state.people.filter(person => person.location.state === filterState);
     this.setState({
-      names: filteredName
+        names: filtered
     });
-  }
+};
 
-  handleSort = () => {
+  // resets the search results after a previous search
+  handleReset = event => {
+    event.preventDefault();
+    this.setState({
+      names: this.state.people
+    });
+    document.querySelector("#filterInput").value = "";
+};
+  
+// sorts the people by their names
+  handleNameSort = event => {
     this.setState({
       names: this.state.names.sort((a,b) => a.name.last.localeCompare(b.name.last))
     });
   }
   
+  // sorts the people by the state they live in 
+  handleStateSort = event => {
+      this.setState({
+        names: this.state.names.sort((a,b) => a.location.state.localeCompare(b.location.state))
+    });
+  }
+
   render() {
     return (
         <div>
           <Header />
             <SearchForm
-                // value={this.state.search}
-                handleInputChange={this.handleInputChange}
-                handleSort={this.handleSort}
-                />
-                
-            <ResultsTable people={this.state.people}/>
+              handleInputChange={this.handleInputChange}
+              handleFormSubmit={this.handleFormSubmit}
+              locations={this.state.locations}
+              handleReset={this.handleReset}/>   
+            <ResultsTable 
+              names={this.state.names}
+              handleNameSort={this.state.handleNameSort}
+              handleStateSort={this.state.handleStateSort}/>
         </div>
       );
     }
