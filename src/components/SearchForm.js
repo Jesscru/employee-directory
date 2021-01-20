@@ -19,8 +19,8 @@ function SearchForm(props){
                 onChange={props.handleInputChange}
               />
               <datalist id="states">
-                  {this.state.states.map(state => (
-                      <option value={state} key={state}></option>
+                  {props.locations.map(location => (
+                      <option value={location} key={location}></option>
                   ))}
               </datalist>
 

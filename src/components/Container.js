@@ -80,6 +80,7 @@ class Container extends Component {
               handleReset={this.handleReset}/>   
             <ResultsTable 
               names={this.state.names}
+              people={this.state.people}
               handleNameSort={this.state.handleNameSort}
               handleStateSort={this.state.handleStateSort}/>
         </div>

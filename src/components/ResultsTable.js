@@ -26,7 +26,7 @@ function ResultsTable(props){
                     <td>{person.location.state}</td>
                 </tr>
                 ))}
-               {props.filteredNames.map(name => (
+               {props.names.map(name => (
                 <tr key={name.login.uuid}>
                     <td><img src={name.picture.medium} alt="profile of employee"></img></td>
                     <td>{name.name.first} {name.name.last}</td>
