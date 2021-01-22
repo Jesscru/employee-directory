@@ -46,6 +46,7 @@ class Container extends Component {
     this.setState({
       names: this.state.people
     });
+    window.location.reload();
     document.querySelector("#filter").value = "";
 };
   
