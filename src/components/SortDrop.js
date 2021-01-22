@@ -1,11 +1,12 @@
 import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
+import "../styling/SortDrop.css";
 
 function SortDrop(props){
     return (
-        <div>
+        <div id="width">
             <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                <Dropdown.Toggle className="sort-drop" id="dropdown-basic">
                     Sort By...
                 </Dropdown.Toggle>
 

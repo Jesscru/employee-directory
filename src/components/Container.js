@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import SearchForm from "./SearchForm";
+import "../styling/Container.css";
 import ResultsTable from "./ResultsTable";
 import API from "../utils/API";
 import Header from "./Header";
-
+import Button from "react-bootstrap/Button";
+import SortDrop from "./SortDrop";
 
 class Container extends Component {
     state = {
@@ -39,12 +40,14 @@ class Container extends Component {
   // filters employees by state entered in input field 
   handleFormSubmit = event => {
     event.preventDefault();
-    const filterState = document.querySelector("#filterInput").value;
+    const filterState = document.querySelector("#filter").value;
     const filtered = this.state.people.filter(person => person.location.state === filterState);
     this.setState({
         names: filtered
     });
-};
+  
+    console.log(filterState);
+  };
 
   // resets the search results after a previous search
   handleReset = event => {
@@ -52,7 +55,7 @@ class Container extends Component {
     this.setState({
       names: this.state.people
     });
-    document.querySelector("#filterInput").value = "";
+    document.querySelector("#filter").value = "";
 };
   
 // sorts the people by their names
@@ -73,16 +76,46 @@ class Container extends Component {
     return (
         <div>
           <Header />
-            <SearchForm
-              handleInputChange={this.handleInputChange}
-              handleFormSubmit={this.handleFormSubmit}
-              locations={this.state.locations}
-              handleReset={this.handleReset}/>   
-            <ResultsTable 
-              names={this.state.names}
-              people={this.state.people}
-              handleNameSort={this.state.handleNameSort}
-              handleStateSort={this.state.handleStateSort}/>
+          <form>
+            <input
+                id="filter"
+                className="form-control"
+                type="text"
+                placeholder="Filter by last name"
+                name="filter"
+                // value={props.value}
+                onChange={this.handleInputChange}
+              />
+              <datalist id="states">
+                  {this.state.locations.map(location => (
+                      <option value={location} key={location}></option>
+                  ))}
+              </datalist>
+
+            <SortDrop 
+              handleNameSort={this.handleNameSort}
+              handleStateSort={this.handleStateSort} />
+
+            <Button 
+              className="filter-btn"
+              variant="outline-primary" 
+              onClick={this.handleFormSubmit}> Filter
+            </Button>
+
+            <Button 
+              className="sort-btn"
+              variant="outline-primary" 
+              onClick={this.handleReset}>Reset
+            </Button>
+
+          </form>
+            
+          <ResultsTable 
+            names={this.state.names}
+            people={this.state.people}
+            handleNameSort={this.handleNameSort}
+            handleStateSort={this.handleStateSort} />
+
         </div>
       );
     }

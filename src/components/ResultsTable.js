@@ -1,6 +1,7 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 import "../styling/ResultsTable.css"
+import downArrow from "./images/arrow-down.png";
 
 function ResultsTable(props){
 
@@ -10,10 +11,10 @@ function ResultsTable(props){
             <thead>
               <tr>
                 <th>Profile</th>
-                <th data-value="name" onClick={props.handleNameSort}>Name</th>
+                <th data-value="name">Name<img className="arrow" src={downArrow} alt="down arrow" onClick={props.handleNameSort}></img></th>
                 <th>Phone</th>
                 <th>Email</th>
-                <th data-value="location" onClick={props.handleStateSort}>Location</th>
+                <th data-value="location">Location<img className="arrow" src={downArrow} alt="down arrow" onClick={props.handleStateSort}></img></th>
               </tr>
             </thead>
             <tbody>

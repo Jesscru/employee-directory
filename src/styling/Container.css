@@ -1,0 +1,25 @@
+#filter, 
+.form-control{
+    width: 50%;
+    display: inline;
+    margin: 0;
+}
+
+.filter-btn, 
+.sort-btn {
+    margin: 5px 5px 10px 20px;
+    color: white;
+    background-color:rgb(95, 95, 95);
+    border: none;
+    display: inline;
+}
+
+.filter-btn:hover, 
+.sort-btn:hover {
+    background-color:rgb(54, 54, 54);
+}
+
+.filter-btn:active, 
+.sort-btn:active {
+    background-color:rgb(95, 95, 95);
+}

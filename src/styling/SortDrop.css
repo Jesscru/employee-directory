@@ -1,0 +1,20 @@
+#width, 
+.dropdown {
+    width: 20%;
+    display: inline;
+    margin: 0;
+}
+
+.sort-drop {
+    background-color:  rgb(95, 95, 95);
+    border: none;
+    margin: 5px 5px 10px 20px;
+}
+
+.sort-drop:hover {
+    background-color:rgb(54, 54, 54);
+}
+
+.sort-drop:focus {
+    background-color:rgb(95, 95, 95);
+}
