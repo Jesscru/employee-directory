@@ -34,7 +34,7 @@ class Container extends Component {
     const filterState = document.querySelector("#filter").value;
     const filtered = this.state.people.filter(person => person.location.state === filterState);
     this.setState({
-        names: filtered
+        people: filtered
     });
   
     console.log(filterState);
@@ -51,7 +51,6 @@ class Container extends Component {
   
 // sorts the people by their names
   handleNameSort = event => {
-
     this.setState({
       names: this.state.people.sort((a,b) => a.name.last.localeCompare(b.name.last))
     });
