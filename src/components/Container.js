@@ -27,15 +27,6 @@ class Container extends Component {
         })
         .catch(err => console.log(err));
     };
-  
-  // allows the input field to be entered and sets the value of the field to whatever is being typed in  
-    handleInputChange = event => {
-      const value = event.target.value;
-      const name = event.target.name;
-      this.setState({
-        [name]: value
-      });
-    };
 
   // filters employees by state entered in input field 
   handleFormSubmit = event => {
@@ -60,15 +51,16 @@ class Container extends Component {
   
 // sorts the people by their names
   handleNameSort = event => {
+
     this.setState({
-      names: this.state.names.sort((a,b) => a.name.last.localeCompare(b.name.last))
+      names: this.state.people.sort((a,b) => a.name.last.localeCompare(b.name.last))
     });
   }
   
   // sorts the people by the state they live in 
   handleStateSort = event => {
       this.setState({
-        names: this.state.names.sort((a,b) => a.location.state.localeCompare(b.location.state))
+        names: this.state.people.sort((a,b) => a.location.state.localeCompare(b.location.state))
     });
   }
 
@@ -82,10 +74,7 @@ class Container extends Component {
                 className="form-control"
                 type="text"
                 placeholder="Filter by last name"
-                name="filter"
-                // value={props.value}
-                onChange={this.handleInputChange}
-              />
+                name="filter" />
               <datalist id="states">
                   {this.state.locations.map(location => (
                       <option value={location} key={location}></option>
@@ -112,9 +101,7 @@ class Container extends Component {
             
           <ResultsTable 
             names={this.state.names}
-            people={this.state.people}
-            handleNameSort={this.handleNameSort}
-            handleStateSort={this.handleStateSort} />
+            people={this.state.people} />
 
         </div>
       );
