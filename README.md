@@ -16,7 +16,7 @@ One can access the project via this link: https://jesscru.github.io/employee-dir
 
 If one chooses to fork this repository, they may start the app in development mode by running npm start from their terminal in the root of the directory. From there, the app will be deployed at http://localhost:3000/. The user will see the following upon arriving at the page. 
 
-![screenshot of app's landing page](./assets/emp-dir.gif)
+![screenshot of app's landing page](./public/assets/emp-dir.gif)
 
 ## Usage 
 
