@@ -12,11 +12,11 @@
 
 ## Installation
 
-One can access the project via this link: 
+One can access the project via this link: https://jesscru.github.io/employee-directory/
 
 If one chooses to fork this repository, they may start the app in development mode by running npm start from their terminal in the root of the directory. From there, the app will be deployed at http://localhost:3000/. The user will see the following upon arriving at the page. 
 
-<!-- ![screenshot of app's landing page]("./images/emp-dir.png") -->
+![screenshot of app's landing page](./images/emp-dir.png)
 
 ## Usage 
 
@@ -27,6 +27,8 @@ This app serves as directory to all the employee's of fictional company. The emp
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 The [Random User API](https://randomuser.me/) was used to populate "employees" to the page. 
+
+The page is hosted via Github Pages.
 
 ## License
 
