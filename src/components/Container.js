@@ -73,7 +73,7 @@ class Container extends Component {
                 id="filter"
                 className="form-control"
                 type="text"
-                placeholder="Filter by last name"
+                placeholder="Filter by state"
                 name="filter" />
               <datalist id="states">
                   {this.state.locations.map(location => (
